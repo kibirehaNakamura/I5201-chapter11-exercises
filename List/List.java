@@ -11,18 +11,22 @@ public class List {
 		int kind;
 		while(0 <= (kind = ki.readInt("操作(0:検索/1:表示/2:追加/3:更新/4:削除/-1:終了)"))) {
 			switch(kind) {
-			case 0:	// 検索(ListSearchの流用)(データない時はその旨表示した方がよさそうなので後で直す)
-				int num;
-				while(0 < (num = ki.readInt("検索番号(0:終了)"))) {
-					int idx = lip;
-					while((idx != END_OF_LIST) && (num != arrayNum[idx])) {
-						idx = arrayNext[idx];
-					}
-					
-					if(idx != END_OF_LIST) {
-						System.out.println(arrayScore[idx]);
-					} else {
-						System.out.println("見つかりませんでした");
+			case 0:	// 検索(ListSearchの流用)
+				if(lip == END_OF_LIST) {
+					System.out.println("データが格納されていません");
+				} else {
+					int num;
+					while(0 < (num = ki.readInt("検索番号(0:終了)"))) {
+						int idx = lip;
+						while((idx != END_OF_LIST) && (num != arrayNum[idx])) {
+							idx = arrayNext[idx];
+						}
+						
+						if(idx != END_OF_LIST) {
+							System.out.println(arrayScore[idx]);
+						} else {
+							System.out.println("見つかりませんでした");
+						}
 					}
 				}
 				break;
