@@ -1,7 +1,11 @@
 public class Eratosthenes {
 	public static void main(String[] args) {
 		KeyIn ki = new KeyIn();
-		int range = ki.readInt("いくつまで？");
+		int range;
+		while(true) {
+			range = ki.readInt("いくつまで？");
+			if(range >= 2) break;
+		}
 		
 		/* 初期値設定 */
 		boolean[] arrayPrime = new boolean[range + 1];
